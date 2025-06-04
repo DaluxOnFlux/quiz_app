@@ -1,0 +1,58 @@
+# Ignorer les fichiers Python compilés
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environnements virtuels
+env/
+venv/
+ENV/
+.venv/
+.env/
+.envrc
+
+# Fichiers de configuration d’environnement
+*.env
+*.env.*
+
+# Jupyter Notebook checkpoints (si utilisés)
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# fichiers temporaires
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# Cache
+.cache/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# fichiers spécifiques à Git
+.git/
+
+# fichiers spécifiques à PyCharm
+.idea/
+*.iml
+
+# Base de données (si SQLite locale utilisée)
+*.sqlite3
+
+# Coverage, test, etc.
+htmlcov/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
