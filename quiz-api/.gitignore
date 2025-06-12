@@ -49,6 +49,8 @@ build/
 
 # Base de données (si SQLite locale utilisée)
 *.sqlite3
+quiz-api/quiz.db
+quiz.db
 
 # Coverage, test, etc.
 htmlcov/
