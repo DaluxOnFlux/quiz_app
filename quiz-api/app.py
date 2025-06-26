@@ -86,7 +86,7 @@ def get_quiz_info():
 
 
 
-ADMIN_PASSWORD = "iloveflask"
+ADMIN_PASSWORD = "flask2023"
 
 @app.route('/login', methods=['POST'])
 def login():
