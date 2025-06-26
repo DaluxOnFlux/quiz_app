@@ -1,5 +1,11 @@
 ## 📸 Aperçu
 
+
+
+https://github.com/user-attachments/assets/8e59f416-2457-49a6-9711-345e3017fb38
+
+
+
 # 🎯 Projet Quiz App – Vue 3 + Flask
 
 Une application web complète permettant à un joueur de passer un quiz avec score final, et à un administrateur d'ajouter, modifier ou supprimer des questions via une interface sécurisée.
@@ -88,6 +94,9 @@ Pour réinitialiser la base de données SQLite :
 ```bash
 curl -X POST http://127.0.0.1:5000/rebuild-db
 ```
+
+![schema bdd](https://github.com/user-attachments/assets/f71dea77-80d6-45ef-a990-f33641acf190)
+
 
 ---
 
