@@ -2,8 +2,7 @@
 const props = defineProps({
   question: Object,
 });
-
-const emit = defineEmits(['answer-clicked']);
+const emit = defineEmits(['click-on-answer']);
 </script>
 
 <template>
@@ -17,7 +16,7 @@ const emit = defineEmits(['answer-clicked']);
       <li
         v-for="(answer, index) in question.possibleAnswers"
         :key="index"
-        @click="emit('answer-clicked', index + 1)"
+        @click="emit('click-on-answer', index + 1)"
       >
         {{ answer.text }}
       </li>

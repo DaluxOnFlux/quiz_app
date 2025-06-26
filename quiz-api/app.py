@@ -86,7 +86,7 @@ def get_quiz_info():
 
 
 
-ADMIN_PASSWORD = "flask2023"
+ADMIN_PASSWORD = "iloveflask"
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -332,3 +332,24 @@ def get_question_by_id(qid: int):
 
 if __name__ == "__main__":
     app.run()
+
+@app.route("/questions/all", methods=["GET"])
+def get_all_questions():
+    _check_admin_token()                         # vérifie le token admin
+    from question import _get_conn, get_by_id
+    conn = _get_conn()
+    cur = conn.cursor()
+    cur.execute("SELECT id FROM Question ORDER BY position")
+    rows = cur.fetchall()
+
+    questions = []
+    for (qid,) in rows:
+        q = get_by_id(qid)
+        answers = get_all_by_question(qid)
+        questions.append({
+            **q.to_dict(),
+            "possibleAnswers": [a.to_dict() for a in answers]
+        })
+
+    conn.close()
+    return jsonify(questions), 200

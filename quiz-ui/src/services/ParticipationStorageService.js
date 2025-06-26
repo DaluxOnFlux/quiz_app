@@ -1,17 +1,17 @@
 export default {
   clear() {
-    // vide pour le moment
+    window.localStorage.clear();
   },
   savePlayerName(playerName) {
     window.localStorage.setItem('playerName', playerName);
   },
   getPlayerName() {
-    // vide pour le moment
+    return window.localStorage.getItem('playerName');
   },
-  saveParticipationScore(participationScore) {
-    // vide pour le moment
+  saveParticipationScore(score) {
+    window.localStorage.setItem('participationScore', score);
   },
   getParticipationScore() {
-    // vide pour le moment
+    return parseInt(window.localStorage.getItem('participationScore')) || 0;
   },
 };

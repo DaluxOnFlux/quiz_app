@@ -27,10 +27,22 @@ export default {
         console.error(error);
       });
   },
+
   getQuizInfo() {
     return this.call('get', 'quiz-info');
   },
+
   getQuestion(position) {
     return this.call('get', `questions?position=${position}`);
+  },
+
+  login(password) {
+    return this.call('post', 'login', { password });
+  },
+  getAllQuestions(token) {
+    return this.call('get', 'questions/all', null, token);
+  },
+  deleteQuestion(id, token) {
+    return this.call('delete', `questions/${id}`, null, token);
   },
 };
