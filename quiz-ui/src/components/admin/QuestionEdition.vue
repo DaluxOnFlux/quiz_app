@@ -108,38 +108,51 @@ function cancelEdit() {
 
 <style scoped>
 .question-edition {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: 2rem auto;
   padding: 2rem;
-  background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-family: sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.5rem;
+}
+
+h2,
+h3 {
+  color: #333;
+  text-align: center;
 }
 
 label {
   display: flex;
   flex-direction: column;
-  font-weight: bold;
-  color: #333;
+  font-weight: 600;
+  color: #444;
 }
 
 input[type='text'],
 input[type='number'],
 textarea {
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
-  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+input[type='text']:focus,
+input[type='number']:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
 textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 100px;
 }
 
 .answer-item {
@@ -152,6 +165,13 @@ textarea {
   flex: 1;
 }
 
+.answer-item label {
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .edition-actions {
   display: flex;
   justify-content: flex-end;
@@ -160,11 +180,12 @@ textarea {
 }
 
 .edition-actions button {
-  padding: 0.5rem 1.2rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
   cursor: pointer;
+  font-weight: bold;
   transition: background-color 0.2s ease;
 }
 
@@ -173,8 +194,16 @@ textarea {
   color: white;
 }
 
+.edition-actions button:first-of-type:hover {
+  background-color: #218838;
+}
+
 .edition-actions button:last-of-type {
   background-color: #6c757d;
   color: white;
+}
+
+.edition-actions button:last-of-type:hover {
+  background-color: #5a6268;
 }
 </style>
