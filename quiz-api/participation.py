@@ -1,8 +1,9 @@
 import sqlite3
 from dataclasses import dataclass, asdict
 from typing import Optional
+import os
 
-DB_PATH = "quiz.db"
+DB_PATH = os.path.join(os.path.dirname(__file__), "quiz.db")
 
 @dataclass
 class Participation:

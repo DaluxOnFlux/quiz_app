@@ -276,14 +276,19 @@ def post_participation():
             return jsonify({"error": f"Question à la position {question_position} introuvable."}), 400
 
         question_id = question_row[0]
-        cur.execute("SELECT id, is_correct FROM Answer WHERE id_question = ? ORDER BY id", (question_id,))
-        answers = cur.fetchall()
+        selected_answer_id = answer_position  # ici le front doit envoyer l’id de la réponse
+        cur.execute(
+            "SELECT is_correct FROM Answer WHERE id = ? AND id_question = ?",
+            (selected_answer_id, question_id)
+        )
+        row = cur.fetchone()
 
-        if not answers or len(answers) < answer_position or answer_position < 1:
+        if row is None:
             conn.close()
-            return jsonify({"error": f"Réponse {answer_position} invalide pour la question {question_position}."}), 400
+            return jsonify({"error": f"Réponse ID {selected_answer_id} invalide pour la question {question_position}."}), 400
 
-        selected_answer_id, is_correct = answers[answer_position - 1]
+        is_correct = row[0]
+
 
         if is_correct:
             score += 1
@@ -330,8 +335,6 @@ def get_question_by_id(qid: int):
     }), 200
 
 
-if __name__ == "__main__":
-    app.run()
 
 @app.route("/questions/all", methods=["GET"])
 def get_all_questions():
@@ -353,3 +356,10 @@ def get_all_questions():
 
     conn.close()
     return jsonify(questions), 200
+
+if __name__ == "__main__":
+    from db_init import rebuild_db
+    rebuild_db()
+    app.run()
+
+
