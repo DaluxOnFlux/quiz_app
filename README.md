@@ -42,7 +42,7 @@ python app.py
 
 
 ### 3. Lancer le frontend (Vue)
-## Ouvrir un nouveau terminal
+#### Ouvrir un nouveau terminal
 ```bash
 cd quiz-ui
 npm install
