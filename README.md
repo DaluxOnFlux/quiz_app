@@ -35,12 +35,14 @@ cd quiz_app
 cd quiz-api
 pip install flask-cors
 pip install -r requirements.txt
+python app.py
 ```
 
 > ⚠️ Par défaut, l'API tourne sur `http://127.0.0.1:5000`
 
-### 3. Lancer le frontend (Vue)
 
+### 3. Lancer le frontend (Vue)
+## Ouvrir un nouveau terminal
 ```bash
 cd quiz-ui
 npm install
