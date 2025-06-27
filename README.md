@@ -33,6 +33,7 @@ cd quiz-app
 
 ```bash
 cd quiz-api
+pip install flask-cors
 pip install -r requirements.txt
 ```
 
