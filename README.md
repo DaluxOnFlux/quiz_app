@@ -26,7 +26,7 @@ Une application web complète permettant à un joueur de passer un quiz avec sco
 
 ```bash
 git clone https://github.com/IchRak-1999/quiz_app
-cd quiz-app
+cd quiz_app
 ```
 
 ### 2. Lancer le backend (API Flask)
