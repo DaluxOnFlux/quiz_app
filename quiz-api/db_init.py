@@ -4,7 +4,8 @@ import os
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "quiz.db")
 
-def rebuild_db():
+def rebuild_database():
+    print("[DEBUG] rebuild_database() a bien été appelée")
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
 

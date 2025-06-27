@@ -7,6 +7,7 @@ from jwt_utils import build_token, decode_token, JwtError
 from question import Question, insert, get_by_position, get_by_id, update as update_q, delete_all
 from answer import insert as insert_answer, Answer, get_all_by_question
 from participation import insert_participation, delete_all_participations, get_all_scores
+from db_init import rebuild_database
 
 app = Flask(__name__)
 CORS(app)
@@ -16,13 +17,13 @@ def hello_world():
     return "Hello, Quiz App"
 
 @app.route("/rebuild-db", methods=["POST"])
-def rebuild_db():
-    db_path = "quiz.db"
+def rebuild_db_endpoint():
+    DB_PATH = os.path.join(os.path.dirname(__file__), "quiz.db")
 
-    if os.path.exists(db_path):
-        os.remove(db_path)
+    if os.path.exists(DB_PATH):
+        os.remove(DB_PATH)
 
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
 
     cur.execute("""
@@ -249,6 +250,8 @@ def get_answers_for_question(qid: int):
 
 @app.route("/participations", methods=["POST"])
 def post_participation():
+    print("[DEBUG] Reçu answers =", body.get("answers"))
+
     body = request.get_json() or {}
     if not isinstance(body.get("playerName"), str) or not isinstance(body.get("answers"), list):
         return jsonify({"error": "Champs requis : playerName, answers"}), 400
@@ -286,9 +289,8 @@ def post_participation():
         if row is None:
             conn.close()
             return jsonify({"error": f"Réponse ID {selected_answer_id} invalide pour la question {question_position}."}), 400
-
-        is_correct = row[0]
-
+        
+        is_correct = int(row[0])
 
         if is_correct:
             score += 1
@@ -358,8 +360,7 @@ def get_all_questions():
     return jsonify(questions), 200
 
 if __name__ == "__main__":
-    from db_init import rebuild_db
-    rebuild_db()
+    rebuild_database()
     app.run()
 
 
